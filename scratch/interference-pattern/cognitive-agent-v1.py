@@ -19,10 +19,9 @@ print("Action space: ", ac_space, ac_space.n)
 s_size = ob_space.shape[0]
 a_size = ac_space.n
 model = keras.Sequential()
-model.add(keras.layers.Dense(s_size, input_shape=(s_size,), activation='relu'))
-model.add(keras.layers.Dense(a_size, activation='softmax'))
-model.compile(optimizer=tf.optimizers.Adam(0.001),
-              loss='categorical_crossentropy',
+model.add(keras.layers.Dense(4, input_shape=(4,), activation='tanh'))
+model.compile(optimizer='adam',
+              loss='mean_squared_error',
               metrics=['accuracy'])
 
 total_episodes = 200
